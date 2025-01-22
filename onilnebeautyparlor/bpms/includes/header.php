@@ -6,7 +6,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, ;
     }
     .navbar {
       background-color: #223656; /* Navy blue background */
@@ -54,7 +54,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.php">Millen Salon</a>
+    <a class="navbar-brand" href="index.php" style="font-family: 'Playfair Display', serif; font-size: 24px; color: #333;">Millen Salon</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

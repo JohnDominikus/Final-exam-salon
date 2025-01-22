@@ -83,10 +83,7 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
                         <form action="" method="GET">
                             <label for="customer_search">Search Customer:</label>
                             <input type="text" id="customer_search" name="customer_search" value="<?php echo isset($_GET['customer_search']) ? $_GET['customer_search'] : ''; ?>" placeholder="Enter customer name">
-                            <button type="submit" style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; 
-                            text-align: center; text-decoration: none; display: inline-block; font-size: 14px;
-                             margin: 4px 2px; cursor: pointer; border-radius: 8px;">Search</button>
-
+                            <button type="submit">Search</button>
                         </form>
 
                         <div class="table-responsive bs-example widget-shadow">
@@ -94,7 +91,7 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>#</th>
                                         <th>Name</th>
                                         <th>Mobile</th>
                                         <th>Creation Date</th>
