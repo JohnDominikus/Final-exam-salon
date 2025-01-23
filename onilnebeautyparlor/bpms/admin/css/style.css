@@ -210,7 +210,7 @@ ul.dropdown-menu{
 /*--//side-menu--*/
 /* ----Logo----*/
 .logo {
-    background: #6164C1;
+    background: #F08C4A;;
     text-align: center;
     float: left;
 }
@@ -837,28 +837,28 @@ ul.dropdown-menu.drp-mnu li {
 .stats-left {
     float: left;
     width: 70%;
-    background-color: #4F52BA;
+    background-color: #F08C4A;;
 	text-align: center;
 	padding: 1em;
 }
 .states-mdl .stats-left {
-    background-color: #585858;
+    background-color: #223656;
 }
 .states-mdl .stats-right {
-    background-color: rgba(88, 88, 88, 0.88);
+    background-color: #4e6489;
 }
 .states-last .stats-left {
-    background-color: #e94e02;
+    background-color: #eacc79;
 }
 .states-last .stats-right {
-    background-color: rgba(233, 78, 2, 0.84);
+    background-color: #edd48f;
 }
 .stats-right {
     float: right;
     width: 30%;
     text-align: center;
 	padding: 1.54em 1em;
-	background-color: rgba(79, 82, 186, 0.88);
+	background-color: #fe9f5f;
 }
 .stats-left h5 {
     color: #fff;
@@ -1059,7 +1059,7 @@ h4.title {
 /*-- media --*/
 h3.title1 {
     font-size: 2em;
-    color: #e94e02;
+    color: #F08C4A;
     margin-bottom: 0.8em;
 }
 .bs-example5{
@@ -1344,7 +1344,7 @@ section#tables  p {
     margin-top: 10px;
 }
 .forms button.btn.btn-default {
-    background-color: rgba(97, 100, 193, 0.85);
+    background-color: #223656;
     color: #fff;
     padding: .5em 1.5em;
 	border: none;

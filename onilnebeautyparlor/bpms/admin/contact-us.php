@@ -30,7 +30,7 @@ $timing=$_POST['timing'];
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>BPMS | Contact Us</title>
+<title> Millen Hair Salon | Contact Us</title>
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Bootstrap Core CSS -->

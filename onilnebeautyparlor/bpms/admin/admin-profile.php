@@ -24,7 +24,7 @@ if (strlen($_SESSION['bpmsaid']==0)) {
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>BPMS | Admin Profile</title>
+<title> Millen Hair Salon | Admin Profile</title>
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Bootstrap Core CSS -->
