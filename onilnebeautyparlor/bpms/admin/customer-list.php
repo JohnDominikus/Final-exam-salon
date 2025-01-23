@@ -7,7 +7,7 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
 } else {
 
     // Read operation to fetch data from the database
-	
+    
 
     $search_query = "";
     if (isset($_GET['customer_search']) && !empty($_GET['customer_search'])) {
@@ -27,7 +27,7 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
     <html>
 
     <head>
-        <title> Millen Hair Salon || Customer List</title>
+        <title>Millen Hair Salon || Customer List</title>
 
         <script type="application/x-javascript">
             addEventListener("load", function() {
@@ -64,6 +64,14 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
         <script src="js/custom.js"></script>
         <link href="css/custom.css" rel="stylesheet">
         <!--//Metis Menu -->
+        <style>
+            .action-buttons a {
+                margin: 0 5px;
+            }
+            .search-container {
+                margin-bottom: 20px;
+            }
+        </style>
     </head>
 
     <body class="cbp-spmenu-push">
@@ -80,15 +88,15 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
                     <div class="tables">
                         <h3 class="title1">Customer List</h3>
 
-                        <form action="" method="GET">
+                        <form action="" method="GET" class="search-container">
                             <label for="customer_search">Search Customer:</label>
-                            <input type="text" id="customer_search" name="customer_search" value="<?php echo isset($_GET['customer_search']) ? $_GET['customer_search'] : ''; ?>" placeholder="Enter customer name">
-                            <button type="submit">Search</button>
+                            <input type="text" id="customer_search" name="customer_search" value="<?php echo isset($_GET['customer_search']) ? $_GET['customer_search'] : ''; ?>" placeholder="Enter customer name" class="form-control" style="width: auto; display: inline-block;">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
                         </form>
 
                         <div class="table-responsive bs-example widget-shadow">
                             <h4>Customer List:</h4>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -111,13 +119,11 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
                                             <td><?php echo $row['Name']; ?></td>
                                             <td><?php echo $row['MobileNumber']; ?></td>
                                             <td><?php echo $row['CreationDate']; ?></td>
-                                            <td><a href="edit-customer-detailed.php?editid=<?php echo $row['ID']; ?>">Edit</a> || 
-                                            <a href="add-customer-services.php?addid=<?php echo $row['ID']; ?>">Assign Services</a> || 
-                                            <a href="customer-list-delete.php?deleteid=<?php echo $row['ID'];  ?>" class="delete-btn" data-delete-link="customer-list-delete.php?deleteid=<?php echo $row['ID'];  ?>">Delete</a></td>
-
-
-
-
+                                            <td class="action-buttons">
+                                                <a href="edit-customer-detailed.php?editid=<?php echo $row['ID']; ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a> 
+                                                <a href="add-customer-services.php?addid=<?php echo $row['ID']; ?>" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Assign Services</a> 
+                                                <a href="customer-list-delete.php?deleteid=<?php echo $row['ID']; ?>" class="btn btn-danger btn-sm delete-btn" data-delete-link="customer-list-delete.php?deleteid=<?php echo $row['ID']; ?>"><i class="fa fa-trash"></i> Delete</a>
+                                            </td>
                                         </tr>
                                         
                                     <?php
@@ -128,25 +134,25 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
                                 </tbody>
                             </table>
                         <!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete Customer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this customer? This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a id="delete-link" href="" class="btn btn-danger">Delete</a>
-      </div>
-    </div>
-  </div>
-</div>    
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Customer</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this customer? This action cannot be undone.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <a id="delete-link" href="" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
 
                         </div>
                     </div>
@@ -183,19 +189,16 @@ if (strlen($_SESSION['bpmsaid']) == 0) {
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.js"></script>
 
-
         <script type="text/javascript">
-$(document).ready(function(){
-  $('.table').on('click', '.delete-btn', function(e){
-    e.preventDefault();
-    var deleteLink = $(this).data('delete-link');
-    $('#deleteModal #delete-link').attr('href', deleteLink);
-    $('#deleteModal').modal('show');
-  });
-});
-</script>
-
-
+        $(document).ready(function(){
+            $('.table').on('click', '.delete-btn', function(e){
+                e.preventDefault();
+                var deleteLink = $(this).data('delete-link');
+                $('#deleteModal #delete-link').attr('href', deleteLink);
+                $('#deleteModal').modal('show');
+            });
+        });
+        </script>
     
     </body>
 

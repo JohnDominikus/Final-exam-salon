@@ -154,14 +154,14 @@ include('includes/dbconnection.php');
 </head>
 <body>
     <?php include_once('includes/header.php'); ?>
-
+  
     <!-- Hero Section -->
     <section class="hero-wrap hero-wrap-2">
         
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <h2 class="mb-0 bread">Contact Us</h2>
+                  
                     <p class="breadcrumbs">
                         <!-- Breadcrumbs removed for simplicity -->
                     </p>
@@ -173,7 +173,13 @@ include('includes/dbconnection.php');
     <!-- Contact Info Section -->
     <section class="contact-section">
         <div class="container">
-            <div class="row no-gutters d-flex contact-info">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section">
+                    <h2 class="mb-4">Get in Touch</h2>
+                    <p>We would love to hear from you. Please reach out to us through any of the following methods.</p>
+                </div>
+            </div>
+            <div class="row no-gutters d-flex contact-info"> 
                 <?php
                 $ret = mysqli_query($con, "SELECT * FROM tblpage WHERE PageType='contactus'");
                 while ($row = mysqli_fetch_array($ret)) {

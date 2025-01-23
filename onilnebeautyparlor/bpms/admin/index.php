@@ -34,7 +34,7 @@ if (isset($_POST['login'])) {
     <script src="js/metisMenu.min.js"></script>
     <link href="css/custom.css" rel="stylesheet">
     <style>
-        /* Salon-Themed Design Updates */
+        /* Modern Design Updates */
         body {
             background: linear-gradient(120deg, #f4e7d3, #d8c1a8);
             display: flex;
@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             text-align: center;
             background-image: url('images/salon-background.jpg'); /* Add a salon-themed background image */
             background-size: cover;
@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
             font-weight: 700;
         }
         .login-page h4 {
-            color: #6b4f4f;
+            color: #030303FF;
             font-size: 1.2rem;
             margin-bottom: 20px;
             font-weight: 400;
@@ -73,31 +73,33 @@ if (isset($_POST['login'])) {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 2px solid #d8c1a8;
+            border: 2px solid #071C7AFF;
             border-radius: 8px;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
             background: rgba(255, 255, 255, 0.8);
         }
-        .login-page input[type="text"]:focus,
-        .login-page input[type="password"]:focus {
-            border-color: #6b4f4f;
+        .login-page input[type="text"]:hover,
+        .login-page input[type="password"]:hover {
+            border-color: #071C7AFF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .login-page input[type="submit"] {
             width: 100%;
             padding: 12px;
-            background: #6b4f4f;
+            background: #071C7AFF;
             border: none;
             border-radius: 8px;
             color: #ffffff;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, box-shadow 0.3s;
         }
         .login-page input[type="submit"]:hover {
-            background: #5a3f3f;
+            background: #071C7AFF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .login-page .forgot-grid {
             margin-top: 20px;
@@ -105,13 +107,13 @@ if (isset($_POST['login'])) {
             justify-content: space-between;
         }
         .login-page .forgot-grid a {
-            color: #6b4f4f;
+            color: #071C7AFF;
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s;
         }
         .login-page .forgot-grid a:hover {
-            color: #5a3f3f;
+            color: #071C7AFF;
         }
         .login-page .error-message {
             color: #ff0000;

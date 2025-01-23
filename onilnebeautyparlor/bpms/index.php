@@ -1,38 +1,28 @@
-<?php 
-include('includes/dbconnection.php'); // connection
+<?php
+// Database connection and session start
+include('includes/dbconnection.php');
 session_start();
 error_reporting(0);
-include('includes/dbconnection.php');
-if(isset($_POST['submit'])) // form field values
-  {
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $services=$_POST['services'];
-    $branch=$_POST['branch']; // Newly added branch
-    $adate=$_POST['adate'];
-    $atime=$_POST['atime'];
-    $phone=$_POST['phone'];
-    $aptnumber = mt_rand(100000000, 999999999);  // Generates a random 9-digit appointment number.
+
+// Handle form submission
+if (isset($_POST['submit'])) {
+    // Retrieve form data
   
-    $query=mysqli_query($con,"insert into tblappointment(AptNumber,Name,Email,PhoneNumber,AptDate,AptTime,Services,Branch) value('$aptnumber','$name','$email','$phone','$adate','$atime','$services','$branch')");
-    if ($query) {
-      $ret=mysqli_query($con,"select AptNumber from tblappointment where Email='$email' and  PhoneNumber='$phone'");
-      $result=mysqli_fetch_array($ret);
-      $_SESSION['aptno']=$result['AptNumber'];
-      echo "<script>window.location.href='thank-you.php'</script>";	// Redirects the user to a "thank-you.php
+        echo "<script>window.location.href='makeappoinment.php'</script>"; // Redirect to thank-you page
+    } else {
+        $msg = "Something Went Wrong. Please try again";
     }
-    else {
-      $msg="Something Went Wrong. Please try again";
-    }
-  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Millen Hair Salon || Home Page</title>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -45,8 +35,8 @@ if(isset($_POST['submit'])) // form field values
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Styles -->
     <style>
-        /* Modern Design Updates */
         :root {
             --navy-blue: #223656;
             --peach: #EED590;
@@ -56,28 +46,22 @@ if(isset($_POST['submit'])) // form field values
             --soft-beige: #F4E7D3;
             --dark-brown: #6B4F4F;
         }
-		:root {
-            
-        }
 
-        /* Override Bootstrap Button Styles */
+        /* Button Styles */
         .btn-primary {
-            background-color: var(--navy-blue) !important; /* Navy blue background */
-            border-color: var(--navy-blue) !important; /* Navy blue border */
-            color: #ffffff !important; /* White text */
-            transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+            background-color: var(--navy-blue) !important;
+            border-color: var(--navy-blue) !important;
+            color: var(--white) !important;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-
-        /* Hover Effect */
         .btn-primary:hover {
-            background-color: #1a2a40 !important; /* Darker navy blue on hover */
-            border-color: #1a2a40 !important; /* Darker navy blue border on hover */
+            background-color: #1a2a40 !important;
+            border-color: #1a2a40 !important;
+        }
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(34, 54, 86, 0.5) !important;
         }
 
-        /* Focus Effect */
-        .btn-primary:focus {
-            box-shadow: 0 0 0 0.2rem rgba(34, 54, 86, 0.5) !important; /* Navy blue focus shadow */
-        }
         /* Hero Section */
         .hero {
             background-image: url(images/redbg.jpg);
@@ -98,13 +82,13 @@ if(isset($_POST['submit'])) // form field values
         .hero h1 {
             font-family: 'Pacifico', cursive;
             font-size: 4rem;
-            color: var(--white); /* Updated to white */
+            color: var(--white);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         .hero p {
             font-size: 1.2rem;
             margin-top: 20px;
-            color: var(--white); /* Updated to white */
+            color: var(--white);
         }
 
         /* Appointment Section */
@@ -135,7 +119,7 @@ if(isset($_POST['submit'])) // form field values
             border-color: var(--aqua);
         }
         .appointment-wrap .btn-primary {
-            background-color: var(--navy-blue); /* Updated to #223656 */
+            background-color: var(--navy-blue);
             border: none;
             border-radius: 8px;
             padding: 12px;
@@ -145,12 +129,12 @@ if(isset($_POST['submit'])) // form field values
             transition: background 0.3s;
         }
         .appointment-wrap .btn-primary:hover {
-            background-color: #1a2a40; /* Darker navy blue on hover */
+            background-color: #EBEBEBFF;
         }
 
         /* Reservation Text Color */
         .appointment-wrap .subheading {
-            color: var(--tangerine); /* Updated to #F08C4A */
+            color: var(--tangerine);
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 10px;
@@ -189,7 +173,7 @@ if(isset($_POST['submit'])) // form field values
     </style>
 </head>
 <body>
-    <?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php'); ?>
 
     <!-- Hero Section -->
     <section id="home-section" class="hero" style="background-image: url(images/redbg.jpg);" data-stellar-background-ratio="0.5">
@@ -198,12 +182,12 @@ if(isset($_POST['submit'])) // form field values
                 <div class="overlay"></div>
                 <div class="container-fluid p-0">
                     <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-                        <img class="one-third align-self-end order-md-last img-fluid" src="images/har2.png" alt="">
+                        <img class="one-third align-self-end order-md-last img-fluid" src="images/bg_1.png" alt="">
                         <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                             <div class="text mt-5">
                                 <span class="subheading">Beauty Parlour</span>
                                 <h1 class="mb-4">Good hair days start here.</h1>
-                                <p class="mb-4">Ready to ditch the bad hair days and embrace your hair goals? We're experts in all things hair, from classic cuts and vibrant colors to the trendiest styles. Whether you're craving a complete makeover or just need a bit of TLC, we'll create a look that's perfect for you. ✨</p>
+                                <p class="mb-4">Ready to ditch the bad hair days and embrace your hair goals? We're experts in all things hair, from classic cuts and vibrant colors to the trendiest styles. Whether you're craving a complete makeover or just need a bit of TLC, we'll create a look that's perfect for you.</p>
                             </div>
                         </div>
                     </div>
@@ -214,12 +198,28 @@ if(isset($_POST['submit'])) // form field values
                 <div class="overlay"></div>
                 <div class="container-fluid p-0">
                     <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-                        <img class="one-third align-self-end order-md-last img-fluid" src="images/hair.png" alt="">
+                        <img class="one-third align-self-end order-md-last img-fluid" src="images/bg_2.png" alt="">
                         <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                             <div class="text mt-5">
                                 <span class="subheading">Natural Beauty</span>
                                 <h1 class="mb-4">Get the look you deserve.</h1>
                                 <p class="mb-4">This parlour provides huge facilities with advanced technology equipments and best quality service. Here we offer best treatment that you might have never experienced before.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-item js-fullheight">
+                <div class="overlay"></div>
+                <div class="container-fluid p-0">
+                    <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+                        <img class="one-third align-self-end order-md-last img-fluid" src="images/har2.png" alt="">
+                        <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                            <div class="text mt-5">
+                                <span class="subheading">  Real Beauty</span>
+                                <h1 class="mb-4">  Style that defines who you are.</h1>
+                               
+                            <p class="mb-4">Your look is a reflection of your personality. At Millen Hair Salon, we believe in enhancing your natural beauty with styles that suit your unique features. Whether it's a fresh haircut, a bold new color, or a complete makeover, our expert stylists are here to help you achieve the look you desire.</p>
                             </div>
                         </div>
                     </div>
@@ -235,66 +235,28 @@ if(isset($_POST['submit'])) // form field values
                 <div class="one-forth d-flex align-items-end">
                     <div class="text">
                         <div class="appointment-wrap">
+                        <br />
+                        <br />
                             <span class="subheading">Reservation</span>
+                            <br />
+                                <br />
                             <h3 class="mb-2">Make an Appointment</h3>
+                            <br />
+                                <br />
                             <form action="#" method="post" class="appointment-form">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Full Name" name="name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="appointment_email" placeholder="Your Email Address" name="email" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="select-wrap">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="services" id="services" required class="form-control">
-                                                    <option value="">Select Services</option>
-                                                    <?php $query=mysqli_query($con,"select * from tblservices");
-                                                    while($row=mysqli_fetch_array($query)) { ?>
-                                                        <option value="<?php echo $row['ServiceName'];?>"><?php echo $row['ServiceName'];?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="select-wrap">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="branch" id="branch" required class="form-control">
-                                                    <option value="">Select Branch</option>
-                                                    <?php $query=mysqli_query($con,"select * from tblbranch");
-                                                    while($row=mysqli_fetch_array($query)) { ?>
-                                                        <option value="<?php echo $row['Branch'];?>"><?php echo $row['Branch'];?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control appointment_date" placeholder="Select Date" name="adate" id='adate' required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control appointment_time" placeholder="Select Time" name="atime" id='atime' required>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone Number" required maxlength="10" pattern="[0-9]+">
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-group">
-								<input type="submit" name="submit" value="Make an Appointment" class=" btn-primary">
+                                   
+                                        
+                                            
+                                   
+                                <div class="form-group">
+                                <p class="mb-2">"Transform your style with Milen Salon—where your dream look is just a click of your fingertips away. Book your Milen Salon appointment now and let us bring out the best in you!"</p>
+                                </div>
+                                <br />
+                               
+                                <br />
+                                <br />
+                                    <input type="submit" name="submit" value="Make an Appointment" class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
@@ -307,7 +269,7 @@ if(isset($_POST['submit'])) // form field values
         </div>
     </section>
 
-    <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script>
@@ -330,8 +292,8 @@ if(isset($_POST['submit'])) // form field values
     <script>
         // Initialize AOS (Animate On Scroll)
         AOS.init({
-            duration: 1000, // Animation duration
-            once: true, // Whether animation should happen only once
+            duration: 1000,
+            once: true,
         });
     </script>
 </body>
